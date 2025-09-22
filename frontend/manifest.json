@@ -1,0 +1,107 @@
+{
+  "name": "Daily Mood Tracker",
+  "short_name": "MoodTracker",
+  "description": "Track your daily mood with emojis and notes. Simple, private, and secure mood tracking.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#4285f4",
+  "background_color": "#f8f9fa",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["health", "lifestyle", "productivity"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "screenshots": [
+    {
+      "src": "screenshots/mobile-home.png",
+      "sizes": "375x812",
+      "type": "image/png",
+      "platform": "mobile",
+      "label": "Mobile home screen"
+    },
+    {
+      "src": "screenshots/desktop-home.png", 
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Desktop home screen"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Log Today's Mood",
+      "short_name": "Log Mood",
+      "description": "Quickly log your mood for today",
+      "url": "/?action=log",
+      "icons": [
+        {
+          "src": "icons/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "View History",
+      "short_name": "History",
+      "description": "View your mood history",
+      "url": "/?action=history",
+      "icons": [
+        {
+          "src": "icons/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false
+}

@@ -1,0 +1,40 @@
+{
+  "name": "daily-mood-tracker-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Daily Mood Tracker application",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/ --ext .js",
+    "lint:fix": "eslint src/ --ext .js --fix",
+    "format": "prettier --write src/**/*.js"
+  },
+  "keywords": ["mood", "tracker", "express", "sqlite", "api"],
+  "author": "Daily Mood Tracker Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "express-rate-limit": "^6.10.0",
+    "express-validator": "^7.0.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "nodemon": "^3.0.1",
+    "eslint": "^8.49.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "prettier": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "daily-mood-tracker",
+  "version": "1.0.0",
+  "description": "A simple daily mood tracking application",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run start:backend",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && node server.js",
+    "start:dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "test": "cd backend && npm test",
+    "test:watch": "cd backend && npm run test:watch",
+    "build": "echo 'No build step required for this simple app'",
+    "install:all": "cd backend && npm install"
+  },
+  "keywords": ["mood", "tracker", "daily", "emoji", "notes"],
+  "author": "Daily Mood Tracker",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

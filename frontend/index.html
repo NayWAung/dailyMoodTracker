@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Mood Tracker</title>
+    <meta name="description" content="Track your daily mood with emojis and notes. Simple, private, and secure mood tracking.">
+    
+    <!-- Performance and Security -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4285f4">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+</head>
+<body>
+    <div id="app" class="app">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="header__title">Daily Mood Tracker</h1>
+            <p class="header__subtitle">How are you feeling today?</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Mood Entry Form -->
+            <section class="mood-entry" aria-labelledby="mood-entry-title">
+                <h2 id="mood-entry-title" class="mood-entry__title">Log Your Mood</h2>
+                
+                <form id="mood-form" class="mood-form" novalidate>
+                    <!-- Date Input -->
+                    <div class="form-group">
+                        <label for="mood-date" class="form-label">Date</label>
+                        <input 
+                            type="date" 
+                            id="mood-date" 
+                            name="date" 
+                            class="form-input" 
+                            required 
+                            aria-describedby="date-help"
+                        >
+                        <div id="date-help" class="form-help">Select the date for your mood entry</div>
+                        <div class="form-error" id="date-error" role="alert"></div>
+                    </div>
+
+                    <!-- Emoji Selection -->
+                    <div class="form-group">
+                        <fieldset class="emoji-fieldset">
+                            <legend class="form-label">How are you feeling?</legend>
+                            <div class="emoji-grid" role="radiogroup" aria-labelledby="mood-entry-title">
+                                <input type="radio" id="emoji-sad" name="emoji" value="😢" class="emoji-input" required>
+                                <label for="emoji-sad" class="emoji-label" title="Sad">
+                                    <span class="emoji">😢</span>
+                                    <span class="emoji-text">Sad</span>
+                                </label>
+
+                                <input type="radio" id="emoji-neutral" name="emoji" value="😐" class="emoji-input" required>
+                                <label for="emoji-neutral" class="emoji-label" title="Neutral">
+                                    <span class="emoji">😐</span>
+                                    <span class="emoji-text">Neutral</span>
+                                </label>
+
+                                <input type="radio" id="emoji-happy" name="emoji" value="😊" class="emoji-input" required>
+                                <label for="emoji-happy" class="emoji-label" title="Happy">
+                                    <span class="emoji">😊</span>
+                                    <span class="emoji-text">Happy</span>
+                                </label>
+
+                                <input type="radio" id="emoji-excited" name="emoji" value="😄" class="emoji-input" required>
+                                <label for="emoji-excited" class="emoji-label" title="Excited">
+                                    <span class="emoji">😄</span>
+                                    <span class="emoji-text">Excited</span>
+                                </label>
+
+                                <input type="radio" id="emoji-love" name="emoji" value="😍" class="emoji-input" required>
+                                <label for="emoji-love" class="emoji-label" title="Love">
+                                    <span class="emoji">😍</span>
+                                    <span class="emoji-text">Love</span>
+                                </label>
+                            </div>
+                            <div class="form-error" id="emoji-error" role="alert"></div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Note Input -->
+                    <div class="form-group">
+                        <label for="mood-note" class="form-label">
+                            Note 
+                            <span class="form-optional">(optional)</span>
+                        </label>
+                        <textarea 
+                            id="mood-note" 
+                            name="note" 
+                            class="form-textarea" 
+                            placeholder="Tell us more about your day..."
+                            maxlength="500"
+                            aria-describedby="note-help note-counter"
+                        ></textarea>
+                        <div id="note-help" class="form-help">Share what made you feel this way (max 500 characters)</div>
+                        <div id="note-counter" class="form-counter">0/500</div>
+                        <div class="form-error" id="note-error" role="alert"></div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn--primary" id="submit-btn">
+                        <span class="btn__text">Save Mood</span>
+                        <span class="btn__loading" aria-hidden="true">Saving...</span>
+                    </button>
+                </form>
+
+                <!-- Success/Error Messages -->
+                <div id="form-message" class="message" role="alert" aria-live="polite"></div>
+            </section>
+
+            <!-- Mood History -->
+            <section class="mood-history" aria-labelledby="history-title">
+                <div class="section-header">
+                    <h2 id="history-title" class="section-title">Your Mood History</h2>
+                    <div class="history-controls">
+                        <button id="refresh-btn" class="btn btn--secondary" title="Refresh history">
+                            <span>↻</span> Refresh
+                        </button>
+                        <select id="history-filter" class="form-select" aria-label="Filter mood history">
+                            <option value="7">Last 7 days</option>
+                            <option value="30" selected>Last 30 days</option>
+                            <option value="90">Last 3 months</option>
+                            <option value="all">All time</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div id="history-loading" class="loading" aria-hidden="true">
+                    <div class="loading__spinner"></div>
+                    <p>Loading your mood history...</p>
+                </div>
+
+                <!-- Empty State -->
+                <div id="history-empty" class="empty-state" aria-hidden="true">
+                    <div class="empty-state__icon">📊</div>
+                    <h3 class="empty-state__title">No mood entries yet</h3>
+                    <p class="empty-state__text">Start tracking your mood to see your history here.</p>
+                </div>
+
+                <!-- History List -->
+                <div id="history-list" class="history-list" role="list"></div>
+
+                <!-- Load More -->
+                <button id="load-more-btn" class="btn btn--secondary btn--full-width" style="display: none;">
+                    Load More Entries
+                </button>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer__content">
+                <p class="footer__text">
+                    Your mood data is stored securely and privately on your device.
+                </p>
+                <div class="footer__status">
+                    <span id="online-status" class="status-indicator" aria-label="Connection status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Online</span>
+                    </span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Offline Toast -->
+    <div id="offline-toast" class="toast toast--warning" aria-hidden="true">
+        <div class="toast__content">
+            <strong>You're offline</strong>
+            <p>Your mood entries will be saved and synced when you're back online.</p>
+        </div>
+        <button class="toast__close" aria-label="Close notification">×</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="main.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
