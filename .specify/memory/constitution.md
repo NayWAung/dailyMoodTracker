@@ -1,50 +1,54 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+==================
+Version change: NEW → 1.0.0
+Added principles:
+- I. Code Quality Standards
+- II. Testing Excellence  
+- III. User Experience Consistency
+- IV. Performance Requirements
+Templates requiring updates:
+✅ plan-template.md - Constitution Check section updated
+✅ spec-template.md - Requirements sections aligned
+✅ tasks-template.md - Task categorization updated
+✅ constitution.prompt.md - Template validated
+Follow-up TODOs: None
+-->
+
+# Daily Mood Tracker Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Code Quality Standards
+Code MUST be clean, maintainable, and follow established conventions. All code MUST pass linting and formatting checks before commit. Function and class names MUST be descriptive and follow domain-specific naming patterns. Code complexity MUST be justified when exceeding standard metrics (cyclomatic complexity > 10, function length > 50 lines).
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+**Rationale**: Mood tracking applications require long-term maintainability as user data and features evolve. Clean code reduces bugs and enables confident refactoring.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### II. Testing Excellence (NON-NEGOTIABLE)
+Test-driven development (TDD) is mandatory: tests MUST be written and MUST fail before implementation begins. Every feature MUST have unit tests with >90% coverage. Integration tests MUST cover user workflows and data persistence. Performance tests MUST validate response times and memory usage under load.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+**Rationale**: User mood data is sensitive and critical. Comprehensive testing prevents data loss, ensures feature reliability, and maintains user trust.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### III. User Experience Consistency
+All user interfaces MUST follow established design patterns and accessibility standards. Response times MUST be predictable and fast (<200ms for data entry, <500ms for analytics). Error messages MUST be helpful and actionable. User workflows MUST be intuitive and require minimal cognitive load.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+**Rationale**: Mood tracking requires daily engagement. Inconsistent or slow interfaces break user habits and reduce tracking accuracy.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### IV. Performance Requirements
+Data operations MUST complete within performance budgets: mood entry <100ms, data visualization <1s, analytics queries <3s. Memory usage MUST remain under 50MB for mobile apps, 200MB for desktop. Database queries MUST be optimized and indexed appropriately.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+**Rationale**: Performance directly impacts user engagement. Slow mood tracking tools discourage consistent use, reducing data quality and insights.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Security & Privacy Standards
+
+Data protection MUST follow privacy-by-design principles. User mood data MUST be encrypted at rest and in transit. Local storage MUST be preferred over cloud storage when possible. Data export and deletion MUST be available to users. Authentication MUST use secure, industry-standard methods.
+
+## Quality Assurance Process
+
+All features MUST pass constitution compliance review before merge. Code reviews MUST verify adherence to quality, testing, UX, and performance principles. Automated CI/CD pipelines MUST enforce linting, testing, and performance benchmarks. User acceptance testing MUST validate UX consistency.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other development practices and decisions. Amendments require documented justification, team approval, and migration plan. All pull requests and code reviews MUST verify constitutional compliance. Complexity deviations MUST be explicitly justified in feature planning. Use agent-specific guidance files for runtime development assistance.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-09-22 | **Last Amended**: 2025-09-22

@@ -78,6 +78,13 @@ When creating this spec from a user prompt:
 - **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
 - **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
 
+### Non-Functional Requirements *(include for constitution compliance)*
+- **NFR-001**: Performance: Response times MUST meet constitutional budgets (data entry <100ms, analytics <500ms)
+- **NFR-002**: User Experience: Interface MUST follow established design patterns and accessibility standards
+- **NFR-003**: Testing: Feature MUST have >90% test coverage with unit, integration, and performance tests
+- **NFR-004**: Security: User data MUST be encrypted at rest and in transit, with privacy-by-design principles
+- **NFR-005**: Code Quality: Implementation MUST pass linting, formatting, and complexity checks
+
 ### Key Entities *(include if feature involves data)*
 - **[Entity 1]**: [What it represents, key attributes without implementation]
 - **[Entity 2]**: [What it represents, relationships to other entities]

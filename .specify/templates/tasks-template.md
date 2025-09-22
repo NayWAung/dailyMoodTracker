@@ -45,7 +45,10 @@
 ## Phase 3.1: Setup
 - [ ] T001 Create project structure per implementation plan
 - [ ] T002 Initialize [language] project with [framework] dependencies
-- [ ] T003 [P] Configure linting and formatting tools
+- [ ] T003 [P] Configure linting and formatting tools (Code Quality Standards)
+- [ ] T004 [P] Configure testing framework and coverage reporting (Testing Excellence)
+- [ ] T005 [P] Set up performance monitoring and budgets (Performance Requirements)
+- [ ] T006 [P] Configure security tools and encryption libraries (Security & Privacy)
 
 ## Phase 3.2: Tests First (TDD) ⚠️ MUST COMPLETE BEFORE 3.3
 **CRITICAL: These tests MUST be written and MUST FAIL before ANY implementation**
@@ -71,10 +74,13 @@
 
 ## Phase 3.5: Polish
 - [ ] T019 [P] Unit tests for validation in tests/unit/test_validation.py
-- [ ] T020 Performance tests (<200ms)
-- [ ] T021 [P] Update docs/api.md
-- [ ] T022 Remove duplication
-- [ ] T023 Run manual-testing.md
+- [ ] T020 [P] Performance tests - validate constitutional budgets (<100ms data entry, <500ms analytics)
+- [ ] T021 [P] UX consistency validation - design patterns and accessibility checks
+- [ ] T022 [P] Code quality validation - complexity analysis and cleanup
+- [ ] T023 [P] Security validation - encryption and privacy compliance
+- [ ] T024 [P] Update docs/api.md
+- [ ] T025 Remove duplication and optimize
+- [ ] T026 Run manual-testing.md
 
 ## Dependencies
 - Tests (T004-T007) before implementation (T008-T014)
